@@ -37,6 +37,20 @@ pipeline
              }
 				
         }
-        
+     
+
+stage('Build Docker Image') 
+       {
+             steps 
+             {
+                sh 'cp /var/lib/jenkins/workspace/$JOB_NAME/target/ABCtechnologies-1.0.war /var/lib/jenkins/workspace/$JOB_NAME/ABC_tech.war'
+
+                sh 'docker build -t abctech_app:$BUILD_NUMBER .'
+
+                sh 'docker tag abctech_app:$BUILD_NUMBER serge24/abctech_app:$BUILD_NUMBER'
+             }
+				
+        }
+
     }
 }

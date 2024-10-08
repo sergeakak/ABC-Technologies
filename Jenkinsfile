@@ -54,5 +54,16 @@ stage('Build Docker Image') {
         }
 
 
+stage('Push Docker Image') {
+            steps {
+                withDockerRegistry([credentialsId: "mydocker", url: ""]) 
+		{
+                    sh 'docker push ${DOCKER_IMAGE}:latest'
+                }
+            }
+        }
+
+
+
     }
 }

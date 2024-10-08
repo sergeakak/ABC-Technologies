@@ -64,6 +64,13 @@ stage('Push Docker Image') {
         }
 
 
+ stage('Deploy as container') {
+            steps
+            {
+                sh 'docker run -itd -P --name tech_app ${DOCKER_IMAGE}:latest'
+            }
+        }
+
 
     }
 }

@@ -2,14 +2,6 @@ pipeline
 {
     agent any
     
-
-environment {
-        DOCKER_IMAGE = "serge24/abctech_app"
-        WORK_DIR = "/var/lib/jenkins/workspace/ABC-Technologies-CI"
-    }
-
-
-
     stages 
     {
         stage('Code Checkout') 
@@ -46,17 +38,7 @@ environment {
              }
 				
         }
-     
-
-stage('Build Docker Image') 
-       {
-             steps 
-             {
-                sh 'cp ${WORK_DIR}/target/ABCtechnologies-1.0.war abc_tech.war'
-                sh 'docker build -t ${DOCKER_IMAGE}:latest .'
-             }
-				
-        }
+   
 
     }
 }

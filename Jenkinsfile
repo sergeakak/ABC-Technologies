@@ -5,7 +5,7 @@ pipeline
 
 environment {
         DOCKER_IMAGE = "serge24/abctech_app"
-        WORK_DIR = "/var/lib/jenkins/workspace/<name of your project>"
+        WORK_DIR = "/var/lib/jenkins/workspace/ABC-Technologies-CI"
     }
 
 

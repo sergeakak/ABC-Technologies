@@ -1,0 +1,25 @@
+---
+- hosts: nodes
+  become: true
+  tasks:
+    - name: Copy war file to remote nodes
+      copy:
+        src: ./abc_tech.war
+        dest: /home/devops
+    - name: Copy Dockerfile to remote nodes
+      copy:
+       src: ./Dockerfile
+       dest: /home/devops
+    - name: login to dockerhub
+      docker_login:
+        username: sergeakak@yahoo.com
+        password: $angmelima81
+    - name: build docker image
+      command: docker build -t tech_app:v1 .
+    - name: tag image
+      command: docker tag tech_app:v1 serge24/tech_app:v1
+    - name: push image
+      command: docker push serge24/tech_app:v1
+    - name: creating docker container
+      command: docker run -d --name mytech_app -P tech_app:v1
+

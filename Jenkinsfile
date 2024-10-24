@@ -56,7 +56,7 @@ stage('Deploy as Container with Ansible Playbook')
            {
              steps {
                 script {
-                        sh 'ansible-playbook deploy_docker_playbook.yml' 
+                        sh 'ansible-playbook deploy_docker_playbook.yml -b' 
                        }
                     }
             }

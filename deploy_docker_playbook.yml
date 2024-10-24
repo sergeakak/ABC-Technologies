@@ -15,11 +15,11 @@
         username: sergeakak@yahoo.com
         password: $angmelima81
     - name: build docker image
-      command: docker build -t tech_app:v1 .
+      command: docker build -t tech_app:latest .
     - name: tag image
-      command: docker tag tech_app:v1 serge24/tech_app:v1
+      command: docker tag tech_app:v1 serge24/tech_app:latest
     - name: push image
-      command: docker push serge24/tech_app:v1
+      command: docker push serge24/tech_app:latest
     - name: creating docker container
-      command: docker run -d --name mytech_app -P tech_app:v1
+      command: docker run -d --name mytech_app -P tech_app:latest
 

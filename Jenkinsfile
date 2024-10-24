@@ -4,7 +4,6 @@ pipeline
 
  environment 
        {
-        DOCKER_IMAGE = "serge24/tech_app"
         WORK_DIR = "/var/lib/jenkins/workspace/ABC-Technologies-CI"
        }
 
@@ -46,26 +45,9 @@ pipeline
         }
 
 
-stage('Build Docker Image') {
+stage('Copy War File') {
             steps {
                 sh 'cp ${WORK_DIR}/target/ABCtechnologies-1.0.war abc_tech.war'
-                sh 'docker build -t ${DOCKER_IMAGE}:latest .'
-            }
-        }
-
-    stage('Push Docker Image') {
-            steps {
-                withDockerRegistry([credentialsId: "mydocker", url: ""]) 
-		{
-                    sh 'docker push ${DOCKER_IMAGE}:latest'
-                }
-            }
-        }
-
-    stage('Deploy as container') {
-            steps
-            {
-                sh 'docker run -itd -P --name tech_app ${DOCKER_IMAGE}:latest'
             }
         }
 

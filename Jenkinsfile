@@ -54,11 +54,12 @@ stage('Copy War File') {
 
 stage('Deploy as Container with Ansible Playbook') 
            {
-             steps {
-                script {
-                        sh 'ansible-playbook deploy_docker_playbook.yml -b' 
+             steps { 
+                     ansiblePlaybook([credentialsId: "myansible2", disableHostKeyChecking: "true"])
+                     {
+                        sh 'ansible-playbook deploy_docker_playbook.yml' 
                        }
-                    }
+                    } 
             }
 
 

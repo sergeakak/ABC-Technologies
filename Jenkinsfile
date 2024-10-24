@@ -74,7 +74,7 @@ stage('Deploy as Container with Ansible Playbook')
            {
              steps {
                 script {
-                        ansiblePlaybook credentialsId: 'myansible2', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/home/devops/deploy_docker_playbook.yml', vaultTmpPath: ''
+                        sh 'ansible-playbook deploy_docker_playbook.yml' 
                        }
                     }
             }

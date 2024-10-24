@@ -4,7 +4,7 @@ pipeline
 
  environment 
        {
-        DOCKER_IMAGE = "serge24/abctech_app"
+        DOCKER_IMAGE = "serge24/tech_app"
         WORK_DIR = "/var/lib/jenkins/workspace/ABC-Technologies-CI"
        }
 
@@ -68,6 +68,16 @@ stage('Build Docker Image') {
                 sh 'docker run -itd -P --name tech_app ${DOCKER_IMAGE}:latest'
             }
         }
+
+
+stage('Deploy as Container with Ansible Playbook') 
+           {
+             steps {
+                script {
+                        ansiblePlaybook credentialsId: 'myansible2', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/home/devops/deploy_docker_playbook.yml', vaultTmpPath: ''
+                       }
+                    }
+            }
 
 
     }

@@ -55,12 +55,15 @@ stage('Copy War File') {
 stage('Deploy as Container with Ansible Playbook') 
            {
              steps {
-                      ansiblePlaybook('deploy_docker_playbook.yml') 
-		        {    
-                          inventoryPath('nodes.inv')
-                          credentialsId('myansible2')
-                        }
-
+                    
+                    script {
+                             ansiblePlaybook credentialsId: 'myansible2',
+			            disableHostKeyChecking: true,
+			                      installation: 'ansible',
+			                         inventory: 'nodes.inv',
+			                          playbook: 'deploy_docker_playbook.yml',
+			                      vaultTmpPath: ''
+			}
                   } 
             }
 

@@ -17,9 +17,9 @@
     - name: build docker image
       command: docker build -t tech_app:latest .
     - name: tag image
-      command: docker tag tech_app:v1 serge24/tech_app:latest
+      command: docker tag tech_app:latest serge24/tech_app:latest
     - name: push image
       command: docker push serge24/tech_app:latest
     - name: creating docker container
-      command: docker run -d --name mytech_app -P tech_app:latest
+      command: docker run -d --name mytech_app -P serge24/tech_app:latest
 

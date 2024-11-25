@@ -1,0 +1,11 @@
+---
+- name: create deployment pod
+  hosts: kubernetes
+  become: true
+  user: devops
+  tasks:
+  - name: deployment pod
+    command: kubectl apply -f abctech-deployment.yml
+
+...
+

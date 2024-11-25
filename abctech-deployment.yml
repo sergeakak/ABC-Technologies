@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: abctech-deployment
+  labels:
+    app: abctech-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: abctech-app
+  template:
+    metadata:
+      name: abctech-pod
+      labels:
+        app: abctech-app
+    spec:
+      containers:
+      - name: myabc-tech
+        image: serge24/tech_app:latest
+...

@@ -1,3 +1,6 @@
 [nodes]
 10.206.0.8 ansible_user=devops
 10.206.0.7 ansible_user=devops
+
+[kubernetes]
+10.206.0.32

@@ -6,6 +6,16 @@
   tasks:
   - name: deployment pod
     command: kubectl apply -f abctech-deployment.yml
-
 ...
 
+---
+
+---
+- name: create service pod
+  hosts: kubernetes
+  become: true
+  user: devops
+  tasks:
+  - name: service pod
+    command: kubectl apply -f abctech-service.yml
+...

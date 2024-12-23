@@ -67,5 +67,22 @@ stage('Deploy as Container with Ansible Playbook')
                   } 
             }
 
+stage('Deploy on kubernetes') 
+           {
+             steps {
+                    
+                    script {
+                             ansiblePlaybook credentialsId: 'myansible2',
+			            disableHostKeyChecking: true,
+			                      installation: 'ansible',
+			                         inventory: 'nodes.inv',
+			                          playbook: 'deployment-playbook.yml',
+			                      vaultTmpPath: ''
+		          }
+		         	
+                   } 
+                  
+            }
+
     }
 }
